@@ -37,20 +37,22 @@ When the reader has completed this code pattern they will understand how to:
 [![](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
 -->
 
-# Steps
+# 操作手順
 
-We'll have two methods to run this application: [using an easy one-click deploy option](#using-the-deploy-to-ibm-cloud-button), or [locally with a few CLI tools](#run-the-application-locally). Depending on your objective, learning or seeing the app quickly, choose accordingly.
+このアプリケーションは次の2つの方法で実行することができます。  
+* [IBM Cloud上にデプロイする](#using-the-deploy-to-ibm-cloud-button)
+* [ローカルで実行する](#run-the-application-locally)
 
-## Using the `Deploy to IBM Cloud` button
+## IBM Cloudにデプロイする
 
-> If you prefer to deploy the application manually, scroll down to the next section.
+> アプリケーションを手動でデプロイしたい場合は、次の手順で操作してください。
 
-Steps:
+操作手順
 
-1. [Clone the repo](#1-clone-the-repo)
-2. [Create the services and deploy the web app](#2-create-the-services-and-deploy-the-web-app)
-3. [Upload the Watson Assistant workspace](#3-upload-the-watson-assistant-workspace)
-4. [Configure environment variables](#4-configure-environment-variables)
+1. [リポジトリのクローンする](#1-リポジトリのクローンする)
+2. [サービスを作成してWebアプリをデプロイする](#2-サービスを作成してWebアプリをデプロイする)
+3. [Watson Assistant workspaceのアップロード](#3-WatsonAssistantworkspaceのアップロード)
+4. [環境変数を設定する](#4-環境変数を設定する)
 
 ### 1. リポジトリのクローンする
 
@@ -86,15 +88,16 @@ Optionally, to view the conversation dialog select the workspace and choose the 
 
 ### 4. 環境変数を設定する
 
-The last step to perform is to configure our application to use the right Watson Assistant dialog. We'll solve this by specifying the workspace ID as an environment variable that the web application has access to read. To do this we'll navigate to our application overview from the [IBM Cloud Dashboard](https://cloud.ibm.com/dashboard/apps/), searching for `watson-voice-bot` and clicking on the name.
+[IBM Cloudダッシュボード](https://cloud.ibm.com/dashboard/apps/)へアクセスし、作成したCloud Foundry アプリを表示させる。
 
-From the application overview, we can click on the `Runtime` menu located in the navigation bar on the left. Select the `Environment Variables` tab. Scroll down and click on `Add`.
+左側メニューの「ランタイム」の「ユーザー定義」の「placehold」の値を編集し、保存する。
+* ASSISTANT_IAM_APIKEY の値には、作成したAPI鍵を入力する。
+* WORKSPACE_ID の値には、作成したWORKSPACEのIDを入力する。
+![](![](doc/source/images/add_env_variable.png).png)
 
-![](doc/source/images/add_env_variable.png)
+自動的に　再起動が行われ、「このアプリは稼働中です」の状態に変わったらURLへアクセスする。
 
-We'll add the environment variable key name as `WORKSPACEID` and for the value we'll use the workspace ID from Step 3. Click `Save` and wait for the application to reload.
-
-Once the application restarts, click on the generated URL and start interacting with your voice enabled chatbot! See [Sample output](#sample-output) for things to say to your chatbot.
+![](2019-01-25-14-40-12.png)
 
 ## ローカルでアプリを実行する方法
 

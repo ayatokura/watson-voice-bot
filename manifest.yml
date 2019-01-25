@@ -1,28 +1,28 @@
 ---
 declared-services:
   wvb-conversation-service:
-    label: conversation
-    plan: free
+    label: Watson Assistant-ib
+    plan: lite
   wvb-texttospeech-service:
-    label: text_to_speech
+    label: Text to Speech-lg
     plan: lite
   wvb-speechtotext-service:
-    label: speech_to_text
+    label: Speech to Text-wv
     plan: lite
 
 applications:
 - path: .
   memory: 128M
   instances: 1
-  name: watson-voice-bot-jp
-  host: watson-voice-bot-jp
+  name: watson-voice-bot-tokyo
+  host: watson-voice-bot-tokyo
   disk_quota: 256M
   buildpack: https://github.com/cloudfoundry/python-buildpack.git
   random-route: false
   services:
-  - wvb-conversation-service
-  - wvb-texttospeech-service
-  - wvb-speechtotext-service
+  - Watson Assistant-ib
+  - Text to Speech-lg
+  - Speech to Text-wv
 env:
   WORKSPACE_ID: placeholder
   ASSISTANT_IAM_APIKEY: placeholder
