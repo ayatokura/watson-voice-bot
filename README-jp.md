@@ -105,45 +105,51 @@ Once the application restarts, click on the generated URL and start interacting 
 
 ### 1. リポジトリをクローンする
 
-Clone the `watson-voice-bot` repo locally. In a terminal, run:
+`watson-voice-bot` リポジトリをクローンしてローカルに格納する。
 
+
+コマンドを利用する場合は、次のコマンドを実行する。
 ```
-git clone https://github.com/IBM/watson-voice-bot
+git clone https://github.com/ayatokura/watson-voice-bot.git
 ```
 
-We’ll be using the file [`data/workspace.json`](data/workspace.json).
+後ほど「watson-voice-bot」の「data」フォルダ内に格納されている [`data/workspace.json`](data/workspace.json) ファイルを利用します。
 
 ### 2. IBM CloudでWatson APIを作成する
 
-Create the following services:
+次の3つのWatson APIサービスを作成する。
 
-* [**Watson Conversation**](https://cloud.ibm.com/catalog/services/conversation)
+* [**Watson Assistant**](https://cloud.ibm.com/catalog/services/conversation)
 * [**Watson Speech To Text**](https://cloud.ibm.com/catalog/services/speech-to-text)
 * [**Watson Text To Speech**](https://cloud.ibm.com/catalog/services/text-to-speech)
 
 ### 3. Watson Assistant workspaceをアップロードする
 
-Now that our services are created and the app is deployed we need to update the application to use a specific Watson Assistant dialog. We'll be using the file [`data/workspace.json`](data/workspace.json), which documents our entire conversation dialog. To do this, launch the Watson Assistant tool and use the `import` icon button on the right. Find the [`data/workspace.json`](data/workspace.json) file from the cloned repo and import that to the Watson Assistant tool.
+リソース・リストの先ほど作成した「Watson Assistant」を指定し、「ツールの起動」ボタンをクリックする。
 
-Each workspace in Watson Assistant has a specific ID. To find the `Workspace ID` for a given workspace, click the context menu of the workspace and select `View details`. The workspace ID can be copied and saved as we'll need it in the next step.
+「IBM Watson Assistant」画面で「Skills」→「Create New」を選択する。
+![](2019-01-25-11-22-20.png)
 
-Optionally, to view the conversation dialog select the workspace and choose the **Dialog** tab. Here's a snippet of the dialog:
+「Create New」を選択する。
+![](2019-01-25-11-36-51.png)
 
-![](doc/source/images/dialog.png)
+「Add Dialog Skill」で「Import Skill」タブから「Choose JSON file」ボタンをクリックし、ローカルに格納されている「workspace.json」を指定した後に「Import」ボタンでファイルをアップロードする。
+![](2019-01-25-11-37-37.png)
 
 ### 4. `.env` ファイルでクレデンシャルを設定する
 
-Our services are created and workspace uploaded. It's now time to let our application run locally and to do that we'll configure a simple text file with the values we want to use. We begin by copying the [`env.sample`](env.sample) file and naming it `.env`.
+サンプルの環境ファイル sample.env ファイルを .env というファイル名でコピーを作成する。
+
+コマンドから操作を行う場合は次のコマンドを実行する。
 
 ```
-cp env.sample .env
+cp sample.env .env
 ```
 
-We now populate the key-value pairs with credentials for each IBM Cloud service (Assistant, Speech To Text, and Text To Speech). These values can be found in the `Services` menu in IBM Cloud, by selecting the `Service Credentials` option for each service.
+.env ファイルにクレデンシャル情報を追加し、保存する。
 
-Lastly, the `WORKSPACEID` value was retrieved in the previous step, we use that value here.
 
-#### `env.sample:`
+#### `env.sample`
 
 ```
 # Replace the credentials here with your own.
@@ -168,9 +174,9 @@ TEXTTOSPEECH_PASSWORD=<add tts password>
 
 ### 5. アプリケーションを実行する
 
-1. Start the app by running `python welcome.py`
-2. Launch a browser and navigate to [http://localhost:5000](http://localhost:5000)
-3. Click on the microphone icon to begin speaking and click it again when you are finished.
+1. アプリケーションを実行する `python welcome.py`
+2. Webブラウザで [http://localhost:5000](http://localhost:5000) へアクセスする。
+3. Webブラウザで音声を有効にし、テストする。
 
 # サンプルのアウトプット
 
